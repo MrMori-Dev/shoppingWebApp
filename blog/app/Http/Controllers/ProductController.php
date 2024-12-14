@@ -21,10 +21,16 @@ class ProductController extends Controller
 
     }
 
+    public function insert()
+    {
+        echo 1;
+//        Product::addNewProduct('sim');
+    }
+
     public function add_product()
     {
-
-        Product::addNewProduct('sim');
+        return view('addProduct');
+//        Product::addNewProduct('sim');
     }
 
     public function showOne($id)

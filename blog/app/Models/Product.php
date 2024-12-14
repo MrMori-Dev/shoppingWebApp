@@ -19,7 +19,7 @@ class Product extends Model
 //        self::saved();
     }
     public static function getOne($id){
-        return self::query()->find($id,['id','name','price']);
+        return self::query()->find($id,['*']);
     }
 
 }

@@ -15,11 +15,15 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->bigInteger('category_id')->nullable();
-            $table->double('price')->nullable();
+            $table->double('price_id')->nullable();
             $table->integer('available')->default(0);
             $table->integer('like')->default(0);
             $table->string('image')->nullable();
             $table->string('details')->nullable();
+            $table->integer('capacity')->nullable();
+            $table->string('size');
+            $table->string('color');
+            $table->string('material');
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('deleted_at')->nullable();
