@@ -11,17 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('f_name');
             $table->string('l_name');
             $table->string('user_name');
             $table->string('password');
-            $table->string('country_code');
+            $table->string('national_code');
             $table->enum('sex',['male','female',null])->nullable();
             $table->date('birthday')->nullable();
             $table->enum('type',['individuals','legal'])->nullable();
-            $table->enum('accessibility',['level1','level2','level3'])->default('level1');
+            $table->string('avatar');
+            $table->string('provider_name');
             $table->timestamp('last_login_time');
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();

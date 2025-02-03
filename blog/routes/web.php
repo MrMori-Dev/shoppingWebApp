@@ -1,19 +1,40 @@
 <?php
 
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-use \App\Http\Controllers\UserController;
+
 Route::get('/', function () {
     return view('welcome');
 });
-Route::group(['prefix'=>'/product'],function (){
 
-    Route::get('/all', 'App\Http\Controllers\ProductController@showAll');
-    Route::get('/add','App\Http\Controllers\ProductController@add_product');
-    Route::get('/{id}', 'App\Http\Controllers\ProductController@showOne');
-    Route::get('/addNew','App\Http\Controllers\ProductController@insert');
-});
-Route::group(['prefix'=>'/user'],function (){
-    Route::get('/create',function (){ return view('createNewUser'); });
-    Route::post('/addNewUser',[UserController::class, 'createNewUser'])->name("user.create");
-//    Route::post('addNewUser','UserController@createNewUser')->name('user.create');
+Route::group(['prefix' => '/home'], function () {
+    Route::get('/', function () {
+        return view('home');
+    });
+    Route::group(['prefix' => '/products'], function () {
+
+        Route::get('/all',[\App\Http\Controllers\ProductController::class, 'showAll']);
+
+        Route::get('/create', function () {
+            return view('addProduct');
+        });
+        Route::post('/addNewProduct', [ProductController::class, 'createNewProduct'])->name("product.create");
+    });
+    Route::group(['prefix' => '/users'], function () {
+
+        Route::get('/create', function () {
+            return view('createNewUser');
+        });
+        Route::post('/addNewUser', [UserController::class, 'createNewUser'])->name("user.create");
+    });
+    Route::group(['prefix' => '/orders'], function () {
+        Route::post('/create', [\App\Http\Controllers\OrderController::class, 'createNewOrder']);
+    });
+    Route::group(['prefix' => '/orderItems'], function () {
+
+        Route::get('/all',[\App\Http\Controllers\OrderItemsController::class,'showAll']);
+        Route::post('/create', [UserController::class, 'createNewUser'])->name("user.create");
+        Route::get('/add/{id}',[\App\Http\Controllers\OrderItemsController::class,'add']);
+    });
 });

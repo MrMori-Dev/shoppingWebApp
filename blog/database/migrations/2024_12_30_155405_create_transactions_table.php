@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('connection', function (Blueprint $table) {
+        Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->string('user_id');
-            $table->string('phone_number')->nullable();
-            $table->string('email')->nullable();
-            $table->string('socialNetworkID')->nullable();
-            $table->string('description')->nullable();
+            $table->string('order_id');
+            $table->string('amount');
+            $table->string('description');
+            $table->string('gateway_name');
+            $table->string('status');
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('deleted_at')->nullable();
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('connection');
+        Schema::dropIfExists('transactions');
     }
 };

@@ -20,12 +20,10 @@
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-6">
-            <form class="rForm" action="{{route("product.create")}}" method="post">
-                @csrf
-                <h2 class="text-center">Insert Product</h2>
-                <input type="text" class="form-control" name="productTitle" placeholder="Enter product Title:">
-                <button type="submit" value="SUBMIT" class="btn btn-success btn-block">Add</button>
-            </form>
+                <h2 class="text-center">Home page</h2>
+            <a href="/home/products/create"><button class="btn btn-success btn-block">add new product</button></a>
+            <a href="/home/orderItems/all"><button class="btn  btn-block">order list</button></a>
+            <a href="/home/products/all"><button class="btn btn-success btn-block">product list</button></a>
         </div>
     </div>
 

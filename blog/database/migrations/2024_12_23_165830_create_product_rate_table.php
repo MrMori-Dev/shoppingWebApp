@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cart', function (Blueprint $table) {
+        Schema::create('product_rate', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id');
-            $table->bigInteger('product_id');
-            $table->string('status')->nullable();
-            $table->timestamp('delivered_at')->nullable();
+            $table->string('user_id');
+            $table->string('product_id');
+            $table->enum('rate',[0,1,2,3,4,5])->default(5);
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('deleted_at')->nullable();
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cart');
+        Schema::dropIfExists('product_rate');
     }
 };

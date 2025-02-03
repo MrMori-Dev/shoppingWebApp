@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('accessibility', function (Blueprint $table) {
+        Schema::create('product_attribute', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id');
-            $table->boolean('level1')->default(false);
-            $table->boolean('level2')->default(false);
-            $table->boolean('level3')->default(false);
+            $table->string('products_id');
+            $table->string('attribute');
+            $table->string('value');
+            $table->string('description')->nullable();
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('deleted_at')->nullable();
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('accessbility');
+        Schema::dropIfExists('product_variations');
     }
 };

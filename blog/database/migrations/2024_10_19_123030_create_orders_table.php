@@ -11,10 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('order_history', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string('cart_id');
-            $table->string('description')->nullable();
+            $table->string('user_id');
+            $table->string('address_id');
+            $table->string('coupon_id');
+            $table->string('status');
+            $table->string('total_amount');
+            $table->string('delivery_amount');
+            $table->string('coupon_amount');
+            $table->string('paying_amount');
+            $table->string('payment_type');
+            $table->string('payment_status');
+            $table->string('description');
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('deleted_at')->nullable();

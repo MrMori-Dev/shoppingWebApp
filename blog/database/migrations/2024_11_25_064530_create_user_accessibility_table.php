@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('factor', function (Blueprint $table) {
+        Schema::create('user_accessibility', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('payment_id')->default();
-            $table->string('total_price')->default(0);
-            $table->double('discount')->nullable();
-            $table->bigInteger('discount_code_id')->nullable();
+            $table->string('user_id');
+            $table->string('accessibility_id');
+            $table->dateTime('date_from');
+            $table->dateTime('date_to');
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('deleted_at')->nullable();
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('factor');
+        Schema::dropIfExists('accessbility');
     }
 };
